@@ -5,11 +5,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func initRouter() *gin.Engine {
+func InitRouter() *gin.Engine {
 	router := gin.Default()
 
-	router.RedirectTrailingSlash = true
-	router.RedirectFixedPath = true
+	// router.RedirectTrailingSlash = true
+	// router.RedirectFixedPath = true
 
 	//全局过滤器
 	router.Use(filters.Connect)
@@ -20,17 +20,17 @@ func initRouter() *gin.Engine {
 
 	//Routers
 
-	router.GET("/", HomeIndex)
+	router.GET("/", Home_Index)
 
 	//接口请求
-	api_Group := router.Group("/api")
+	// api_Group := router.Group("/api")
 
-	api_v1 := api_Group.Group("/v1")
+	// api_v1 := api_Group.Group("/v1")
 
-	{
-		api_v1.GET("/videos", GetVideoList)
+	// {
+	// 	api_v1.GET("/videos", GetVideoList)
 
-	}
+	// }
 
 	return router
 }

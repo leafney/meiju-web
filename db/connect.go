@@ -1,9 +1,8 @@
 package db
 
 import (
-	"github.com/gin-gonic/gin"
+	"gopkg.in/mgo.v2"
 	"log"
-	"os"
 )
 
 var (
@@ -14,19 +13,19 @@ var (
 )
 
 const (
-	MongoDBUrl = "mongodb://localhost:27017/xtest"
+	MongoDBUrl = "mongodb://192.168.137.140:27017/xtest"
 )
 
 func Connect() {
 	mongo, err := mgo.ParseURL(MongoDBUrl)
 	s, err := mgo.Dial(MongoDBUrl)
 	if err != nil {
-		log.Printf("Can't connect to mongo, go error %v\n", err)
+		log.Printf("[info] Can't connect to mongo, go error %v\n", err)
 		panic(err.Error())
 	}
 
 	s.SetSafe(&mgo.Safe{})
-	log.Println("Connected to", MongoDBUrl)
+	log.Println("[info] Connected to", MongoDBUrl)
 	Session = s
 	Mongo = mongo
 }

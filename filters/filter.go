@@ -2,6 +2,8 @@ package filters
 
 import (
 	"github.com/Leafney/meiju-web/db"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func Connect(c *gin.Context) {
